@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>pdsview — browse any ATProto PDS</title>
+    <meta
+      name="description"
+      content="A quiet, client-side browser for the public contents of any ATProto personal data server."
+    />
+    <link rel="stylesheet" href="/app.css" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+    <script type="module" src="/main.js"></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <p class="offline-notice" hidden>
+        You’re offline. The app shell works, but nothing new can be fetched until the
+        connection returns.
+      </p>
+      <h1 class="wordmark">pdsview</h1>
+      <p class="tagline">
+        Paste a handle, DID, or at:// URI and browse the public contents of the data server
+        behind it — collections, records, images, exports. Nothing leaves your browser.
+      </p>
+    </header>
+    <main>
+      <form class="lookup">
+        <label class="visually-hidden" for="lookup-input">Handle, DID, or at:// URI</label>
+        <input
+          id="lookup-input"
+          type="text"
+          placeholder="handle, DID, or at:// URI"
+          autocomplete="off"
+          autocapitalize="off"
+          spellcheck="false"
+        />
+        <button type="submit">Browse</button>
+      </form>
+      <p class="note">This is the run-01 scaffold — lookups arrive in the next phase.</p>
+    </main>
+    <footer class="site-footer">
+      <a href="https://croft.ing">croft.ing</a>
+      <a href="https://github.com/CroftCommunity/pdsview">source (AGPL-3.0)</a>
+    </footer>
+  </body>
+</html>

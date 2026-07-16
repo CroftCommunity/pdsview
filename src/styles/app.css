@@ -1,0 +1,324 @@
+@import './tokens.css';
+
+/* Self-hosted variable fonts (OFL, license texts in /fonts). Zero external
+ * font requests — enforced by the e2e shell spec. */
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('/fonts/lora-latin-var.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/fonts/inter-latin-var.woff2') format('woff2');
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: var(--oatmeal-canvas);
+  color: var(--iron-ore-black);
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+h1,
+h2 {
+  font-family: 'Lora', Georgia, serif;
+  color: var(--ruddy-orange);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+a {
+  color: var(--ruddy-ink);
+  text-underline-offset: 0.15em;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--ruddy-ink);
+  outline-offset: 2px;
+}
+
+.site-header {
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: 4rem 1.25rem 0;
+  width: 100%;
+}
+
+.wordmark {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 2.5rem;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.tagline {
+  margin: 0.5rem 0 0;
+  max-width: 34rem;
+}
+
+main {
+  flex: 1;
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 4rem;
+  width: 100%;
+}
+
+.lookup {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.lookup input {
+  flex: 1;
+  min-width: 14rem;
+  padding: 0.6rem 0.75rem;
+  font: inherit;
+  color: var(--iron-ore-black);
+  background: var(--oatmeal-canvas);
+  border: 1px solid var(--light-granite);
+  border-radius: 4px;
+}
+
+.lookup button {
+  padding: 0.6rem 1.1rem;
+  font: inherit;
+  font-weight: 600;
+  color: var(--oatmeal-canvas);
+  background: var(--ruddy-ink);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.note {
+  margin-top: 1rem;
+  font-size: 0.875rem;
+}
+
+.error,
+.error-state {
+  color: var(--iron-ore-black);
+}
+
+.error-state {
+  border-left: 4px solid var(--ruddy-ink);
+  padding-left: 1rem;
+}
+
+/* Identity card */
+.identity-card .did-line code,
+.pds-line code {
+  word-break: break-all;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.1rem 0.5rem;
+  border-radius: 3px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+.badge.verified {
+  background: var(--moss-ink);
+  color: var(--oatmeal-canvas);
+}
+
+.badge.unverified {
+  border: 1px solid var(--light-granite);
+  color: var(--iron-ore-black);
+}
+
+.badge-note,
+.provenance,
+.record-when {
+  font-size: 0.8125rem;
+}
+
+button.copy,
+button.load-more {
+  font: inherit;
+  font-size: 0.8125rem;
+  padding: 0.15rem 0.6rem;
+  color: var(--iron-ore-black);
+  background: transparent;
+  border: 1px solid var(--light-granite);
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+/* Collections and record lists */
+.collections,
+.records {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.collections li,
+.record-row {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--light-granite);
+}
+
+.record-row a code {
+  font-weight: 600;
+}
+
+.record-snippet {
+  display: block;
+}
+
+/* The drystone course: the record path as stacked stone segments. */
+.course {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  margin: 0 0 1.5rem;
+}
+
+.course .stone {
+  display: inline-block;
+  padding: 0.25rem 0.7rem;
+  background: var(--light-granite);
+  color: var(--iron-ore-black);
+  text-decoration: none;
+  border-radius: 2px 6px 2px 6px;
+  font-size: 0.875rem;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+.course a.stone:hover {
+  text-decoration: underline;
+}
+
+.course .stone.current {
+  background: transparent;
+  border: 1px solid var(--light-granite);
+}
+
+/* JSON on Deep Schist panels, like the board's dark screen mock. */
+.panel {
+  background: var(--deep-schist);
+  color: var(--oatmeal-canvas);
+  padding: 1rem;
+  border-radius: 6px;
+  overflow-x: auto;
+}
+
+.json-tree {
+  font-family: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+  font-size: 0.875rem;
+  line-height: 1.7;
+}
+
+.json-tree ul {
+  list-style: none;
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.json-tree summary {
+  cursor: pointer;
+}
+
+.json-tree .json-key {
+  font-weight: 600;
+}
+
+.json-tree a {
+  color: var(--oatmeal-canvas);
+  text-decoration: underline;
+}
+
+.json-tree .json-meta {
+  font-size: 0.75rem;
+}
+
+.blob-image {
+  display: block;
+  max-width: 100%;
+  max-height: 24rem;
+  border-radius: 4px;
+  margin: 0.5rem 0;
+}
+
+.json-tree .blob-node a.blob-download {
+  color: var(--oatmeal-canvas);
+}
+
+.raw-json {
+  margin-top: 1rem;
+}
+
+.raw-json pre {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.offline-notice {
+  border: 1px solid var(--light-granite);
+  border-left: 4px solid var(--ruddy-ink);
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
+}
+
+.site-footer {
+  background: var(--deep-schist);
+  color: var(--oatmeal-canvas);
+  padding: 1.25rem;
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  font-size: 0.875rem;
+}
+
+.site-footer a {
+  color: var(--oatmeal-canvas);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

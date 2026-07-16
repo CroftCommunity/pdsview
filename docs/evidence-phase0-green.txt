@@ -1,0 +1,4 @@
+ Test Files  6 passed (6)
+      Tests  37 passed (37)
+---
+  2 passed (2.0s)

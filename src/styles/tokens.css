@@ -1,0 +1,19 @@
+/*
+ * Croft tectonic board — the single home of color in pdsview.
+ * No raw hex may appear anywhere else (enforced by test/unit/no-raw-hex.test.ts);
+ * every pair used as text/background is contrast-tested in contrast.test.ts.
+ */
+:root {
+  /* Board colors */
+  --deep-schist: #2F3539; /* dark charcoal: JSON/code panel background, footer */
+  --light-granite: #A2A8A5; /* muted grey: borders, surfaces, subtle labels — never text on oatmeal */
+  --ruddy-orange: #B75C34; /* terracotta/rust: headings and wordmark (large text only on oatmeal) */
+  --dark-moss: #3D8548; /* earthy green: success/verified states (large text only on oatmeal) */
+  --iron-ore-black: #1C1E20; /* primary text */
+  --oatmeal-canvas: #E9E1D8; /* warm cream: page background */
+
+  /* Derived inks: board colors darkened until they pass 4.5:1 on oatmeal,
+   * for body-size links, buttons and verified text. */
+  --ruddy-ink: #8A4526;
+  --moss-ink: #2E6437;
+}
