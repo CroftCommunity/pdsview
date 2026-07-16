@@ -42,6 +42,12 @@ describe('body text pairs (>= 4.5:1)', () => {
   it('derived moss-ink on oatmeal-canvas (body-size verified text)', () => {
     expect(ratio('moss-ink', 'oatmeal-canvas')).toBeGreaterThanOrEqual(4.5);
   });
+  it('oatmeal-canvas on moss-ink (verified badge)', () => {
+    expect(ratio('oatmeal-canvas', 'moss-ink')).toBeGreaterThanOrEqual(4.5);
+  });
+  it('iron-ore-black on light-granite (course stones)', () => {
+    expect(ratio('iron-ore-black', 'light-granite')).toBeGreaterThanOrEqual(4.5);
+  });
 });
 
 describe('large text pairs (>= 3:1)', () => {

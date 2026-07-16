@@ -119,6 +119,156 @@ main {
   font-size: 0.875rem;
 }
 
+.error,
+.error-state {
+  color: var(--iron-ore-black);
+}
+
+.error-state {
+  border-left: 4px solid var(--ruddy-ink);
+  padding-left: 1rem;
+}
+
+/* Identity card */
+.identity-card .did-line code,
+.pds-line code {
+  word-break: break-all;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.1rem 0.5rem;
+  border-radius: 3px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+.badge.verified {
+  background: var(--moss-ink);
+  color: var(--oatmeal-canvas);
+}
+
+.badge.unverified {
+  border: 1px solid var(--light-granite);
+  color: var(--iron-ore-black);
+}
+
+.badge-note,
+.provenance,
+.record-when {
+  font-size: 0.8125rem;
+}
+
+button.copy,
+button.load-more {
+  font: inherit;
+  font-size: 0.8125rem;
+  padding: 0.15rem 0.6rem;
+  color: var(--iron-ore-black);
+  background: transparent;
+  border: 1px solid var(--light-granite);
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+/* Collections and record lists */
+.collections,
+.records {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.collections li,
+.record-row {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--light-granite);
+}
+
+.record-row a code {
+  font-weight: 600;
+}
+
+.record-snippet {
+  display: block;
+}
+
+/* The drystone course: the record path as stacked stone segments. */
+.course {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  margin: 0 0 1.5rem;
+}
+
+.course .stone {
+  display: inline-block;
+  padding: 0.25rem 0.7rem;
+  background: var(--light-granite);
+  color: var(--iron-ore-black);
+  text-decoration: none;
+  border-radius: 2px 6px 2px 6px;
+  font-size: 0.875rem;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+.course a.stone:hover {
+  text-decoration: underline;
+}
+
+.course .stone.current {
+  background: transparent;
+  border: 1px solid var(--light-granite);
+}
+
+/* JSON on Deep Schist panels, like the board's dark screen mock. */
+.panel {
+  background: var(--deep-schist);
+  color: var(--oatmeal-canvas);
+  padding: 1rem;
+  border-radius: 6px;
+  overflow-x: auto;
+}
+
+.json-tree {
+  font-family: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+  font-size: 0.875rem;
+  line-height: 1.7;
+}
+
+.json-tree ul {
+  list-style: none;
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.json-tree summary {
+  cursor: pointer;
+}
+
+.json-tree .json-key {
+  font-weight: 600;
+}
+
+.json-tree a {
+  color: var(--oatmeal-canvas);
+  text-decoration: underline;
+}
+
+.json-tree .json-meta {
+  font-size: 0.75rem;
+}
+
+.raw-json {
+  margin-top: 1rem;
+}
+
+.raw-json pre {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
 .visually-hidden {
   position: absolute;
   width: 1px;

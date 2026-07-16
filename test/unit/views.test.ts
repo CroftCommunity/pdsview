@@ -60,8 +60,9 @@ describe('collectionView', () => {
   });
 
   it('renders createdAt and a $type-aware snippet where trivially available', () => {
-    expect(html).toContain(listRecordsFixture.records[0].value.createdAt);
-    expect(html).toContain(listRecordsFixture.records[0].value.text.slice(0, 40));
+    const first = listRecordsFixture.records[0]!;
+    expect(html).toContain(first.value.createdAt);
+    expect(html).toContain(first.value.text.slice(0, 40));
   });
 
   it('shows Load more only when a cursor came back', () => {
