@@ -1,0 +1,10 @@
+ FAIL  test/unit/contrast.test.ts [ test/unit/contrast.test.ts ]
+ FAIL  test/unit/deep-links-are-did-canonical.test.ts [ test/unit/deep-links-are-did-canonical.test.ts ]
+ FAIL  test/unit/no-unexpected-origins.test.ts [ test/unit/no-unexpected-origins.test.ts ]
+ FAIL  test/unit/verified-requires-bidirectional.test.ts [ test/unit/verified-requires-bidirectional.test.ts ]
+ FAIL  test/unit/zero-runtime-deps.test.ts > zero-runtime-deps
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+ FAIL  test/unit/no-raw-hex.test.ts > no raw hex outside tokens.css > tokens.css exists and is the single home of color
+ FAIL  test/unit/no-raw-hex.test.ts > no raw hex outside tokens.css > src/ and assets/ carry no raw hex colors outside tokens.css
+ Test Files  6 failed (6)
+      Tests  2 failed | 3 skipped (5)
