@@ -1,0 +1,154 @@
+@import './tokens.css';
+
+/* Self-hosted variable fonts (OFL, license texts in /fonts). Zero external
+ * font requests — enforced by the e2e shell spec. */
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('/fonts/lora-latin-var.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/fonts/inter-latin-var.woff2') format('woff2');
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: var(--oatmeal-canvas);
+  color: var(--iron-ore-black);
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+h1,
+h2 {
+  font-family: 'Lora', Georgia, serif;
+  color: var(--ruddy-orange);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+a {
+  color: var(--ruddy-ink);
+  text-underline-offset: 0.15em;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--ruddy-ink);
+  outline-offset: 2px;
+}
+
+.site-header {
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: 4rem 1.25rem 0;
+  width: 100%;
+}
+
+.wordmark {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 2.5rem;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.tagline {
+  margin: 0.5rem 0 0;
+  max-width: 34rem;
+}
+
+main {
+  flex: 1;
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 4rem;
+  width: 100%;
+}
+
+.lookup {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.lookup input {
+  flex: 1;
+  min-width: 14rem;
+  padding: 0.6rem 0.75rem;
+  font: inherit;
+  color: var(--iron-ore-black);
+  background: var(--oatmeal-canvas);
+  border: 1px solid var(--light-granite);
+  border-radius: 4px;
+}
+
+.lookup button {
+  padding: 0.6rem 1.1rem;
+  font: inherit;
+  font-weight: 600;
+  color: var(--oatmeal-canvas);
+  background: var(--ruddy-ink);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.note {
+  margin-top: 1rem;
+  font-size: 0.875rem;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.site-footer {
+  background: var(--deep-schist);
+  color: var(--oatmeal-canvas);
+  padding: 1.25rem;
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  font-size: 0.875rem;
+}
+
+.site-footer a {
+  color: var(--oatmeal-canvas);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

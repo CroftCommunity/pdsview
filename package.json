@@ -13,11 +13,12 @@
     "serve": "node scripts/serve-dist.mjs",
     "probe": "node scripts/live-probes.mjs"
   },
-  "dependencies": {},
   "devDependencies": {
     "@playwright/test": "^1.61.1",
+    "@types/node": "^26.1.1",
     "esbuild": "^0.28.1",
     "typescript": "^7.0.2",
     "vitest": "^4.1.10"
-  }
+  },
+  "dependencies": {}
 }

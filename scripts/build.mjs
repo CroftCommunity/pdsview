@@ -6,14 +6,17 @@ mkdirSync('dist', { recursive: true });
 mkdirSync('.build', { recursive: true });
 
 const result = await esbuild.build({
-  entryPoints: ['src/main.ts', 'src/styles/app.css'],
+  entryPoints: [
+    { in: 'src/main.ts', out: 'main' },
+    { in: 'src/styles/app.css', out: 'app' },
+  ],
   bundle: true,
   format: 'esm',
   target: 'es2022',
   outdir: 'dist',
   sourcemap: true,
   minify: true,
-  loader: { '.woff2': 'copy' },
+  external: ['/fonts/*'],
   metafile: true,
 });
 
