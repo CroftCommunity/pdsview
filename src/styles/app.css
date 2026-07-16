@@ -260,6 +260,18 @@ button.load-more {
   font-size: 0.75rem;
 }
 
+.blob-image {
+  display: block;
+  max-width: 100%;
+  max-height: 24rem;
+  border-radius: 4px;
+  margin: 0.5rem 0;
+}
+
+.json-tree .blob-node a.blob-download {
+  color: var(--oatmeal-canvas);
+}
+
 .raw-json {
   margin-top: 1rem;
 }

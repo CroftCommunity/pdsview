@@ -2,6 +2,7 @@
 // (ledger item 4): { $type: "blob", ref: { $link: cid }, mimeType, size }.
 import { describe, expect, it } from 'vitest';
 import { blobHtml, blobUrl, humanSize, isBlobRef } from '../../src/views/blob';
+import { esc } from '../../src/views/html';
 import { recordView } from '../../src/views/record';
 import { getRecordFixture } from '../fixtures/get-record';
 
@@ -42,7 +43,7 @@ describe('blobHtml', () => {
 
   it('renders image mimeTypes as lazy inline images with field-path alt text', () => {
     const html = blobHtml(PDS, DID, image, 'value.avatar');
-    expect(html).toContain(`src="${blobUrl(PDS, DID, 'bafkimg')}"`);
+    expect(html).toContain(`src="${esc(blobUrl(PDS, DID, 'bafkimg'))}"`);
     expect(html).toContain('loading="lazy"');
     expect(html).toMatch(/alt="[^"]*value\.avatar/);
   });
@@ -50,7 +51,7 @@ describe('blobHtml', () => {
   it('renders non-image blobs as a labeled download link with mimeType and size', () => {
     const html = blobHtml(PDS, DID, pdf, 'value.doc');
     expect(html).not.toContain('<img');
-    expect(html).toContain(`href="${blobUrl(PDS, DID, 'bafkpdf')}"`);
+    expect(html).toContain(`href="${esc(blobUrl(PDS, DID, 'bafkpdf'))}"`);
     expect(html).toContain('application/pdf');
     expect(html).toContain('2.0 kB');
   });
@@ -66,7 +67,7 @@ describe('recordView with a PDS context', () => {
   it('renders the fixture avatar inline', () => {
     const html = recordView(DID, 'app.bsky.actor.profile', 'self', getRecordFixture, PDS);
     const cid = (avatar as { ref: { $link: string } }).ref.$link;
-    expect(html).toContain(`src="${blobUrl(PDS, DID, cid)}"`);
+    expect(html).toContain(`src="${esc(blobUrl(PDS, DID, cid))}"`);
     expect(html).toContain('loading="lazy"');
   });
 

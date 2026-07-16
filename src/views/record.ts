@@ -12,8 +12,10 @@ export function recordView(
   collection: string,
   rkey: string,
   record: RecordEnvelope,
+  pdsEndpoint?: string,
 ): string {
   const rawJson = JSON.stringify(record.value, null, 2);
+  const blobCtx = pdsEndpoint ? { pds: pdsEndpoint, did } : undefined;
   return `
 ${course(did, collection, rkey)}
 <section class="record">
@@ -25,7 +27,7 @@ ${course(did, collection, rkey)}
     <button type="button" class="copy" data-copy-text="${esc(rawJson)}">copy JSON</button>
     <button type="button" class="download-record" data-download-filename="${esc(recordFilename(did, collection, rkey))}">Download record (.json)</button>
   </p>
-  ${jsonTree(record.value)}
+  ${jsonTree(record.value, blobCtx)}
   <details class="raw-json">
     <summary>raw JSON</summary>
     <pre class="panel">${esc(rawJson)}</pre>

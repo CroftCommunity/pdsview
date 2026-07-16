@@ -121,7 +121,7 @@ async function renderRecord(did: string, collection: string, rkey: string): Prom
   const identity = await loadIdentity(did);
   const { pds, fetchFn } = pdsFetch(identity);
   const record = await getRecord(pds, did, collection, rkey, fetchFn);
-  return recordView(did, collection, rkey, record);
+  return recordView(did, collection, rkey, record, pds);
 }
 
 async function renderRoute(): Promise<void> {
@@ -289,6 +289,24 @@ document.body.addEventListener('click', async (event) => {
     }
   }
 });
+
+// Broken or blocked blob loads degrade to the download-link presentation.
+// error events don't bubble, so listen in the capture phase.
+document.body.addEventListener(
+  'error',
+  (event) => {
+    const img = event.target;
+    if (!(img instanceof HTMLImageElement) || !img.classList.contains('blob-image')) return;
+    const a = document.createElement('a');
+    a.className = 'blob-download';
+    a.href = img.src;
+    a.setAttribute('download', img.getAttribute('data-blob-cid') ?? '');
+    const mime = img.getAttribute('data-blob-mime') ?? 'unknown type';
+    a.textContent = `download blob (${mime}) — it did not load inline`;
+    img.replaceWith(a);
+  },
+  true,
+);
 
 window.addEventListener('hashchange', () => void renderRoute());
 void renderRoute();
