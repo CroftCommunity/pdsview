@@ -2,6 +2,7 @@
 // CID, raw-JSON toggle, copy-link and copy-JSON buttons.
 import { atRoute } from '../router/routes';
 import type { RecordEnvelope } from '../xrpc';
+import { recordFilename } from '../export/filenames';
 import { course } from './course';
 import { esc } from './html';
 import { jsonTree } from './json-tree';
@@ -22,6 +23,7 @@ ${course(did, collection, rkey)}
   <p class="record-actions">
     <button type="button" class="copy" data-copy-link="${esc(atRoute(did, collection, rkey))}">copy link</button>
     <button type="button" class="copy" data-copy-text="${esc(rawJson)}">copy JSON</button>
+    <button type="button" class="download-record" data-download-filename="${esc(recordFilename(did, collection, rkey))}">Download record (.json)</button>
   </p>
   ${jsonTree(record.value)}
   <details class="raw-json">

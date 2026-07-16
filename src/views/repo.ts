@@ -2,6 +2,7 @@
 import type { ResolutionRung } from '../identity/resolve';
 import { atRoute } from '../router/routes';
 import { didDocUrl } from '../identity/did-doc';
+import { carFilename } from '../export/filenames';
 import { esc } from './html';
 
 export interface RepoViewData {
@@ -48,6 +49,14 @@ export function repoView(data: RepoViewData): string {
   }
     · <a href="${esc(didDocUrl(data.did))}">DID document</a>
   </p>
+  ${
+    data.pdsEndpoint
+      ? `<p class="export-line">
+    <a class="export-car" href="${esc(`${data.pdsEndpoint}/xrpc/com.atproto.sync.getRepo?did=${data.did}`)}" download="${esc(carFilename(data.did))}">Export repo (.car)</a>
+    <span class="export-note">A CAR (Content Addressable aRchive) is the protocol’s canonical full-repo format — downloadable without authentication by spec, and the same file used for account migration.</span>
+  </p>`
+      : ''
+  }
 </section>
 <section class="collections-section">
   <h2>Collections</h2>

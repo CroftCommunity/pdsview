@@ -42,6 +42,9 @@ export function collectionView(
 ${course(did, collection)}
 <section class="collection">
   <h2>${esc(collection)}</h2>
+  <p class="record-actions">
+    <button type="button" class="export-ndjson">Export collection (.ndjson)</button>
+  </p>
   <ul class="records">${rows}</ul>
   ${more}
 </section>`;

@@ -16,6 +16,8 @@ import {
   listRecords,
   type RecordEnvelope,
 } from './xrpc';
+import { exportCollectionNdjson } from './export/ndjson';
+import { ndjsonFilename } from './export/filenames';
 import { collectionView } from './views/collection';
 import { errorView } from './views/errors';
 import { recordView } from './views/record';
@@ -200,6 +202,19 @@ function wireForm(): void {
   });
 }
 
+let ndjsonAbort: AbortController | null = null;
+
+function downloadBlob(filename: string, blob: Blob): void {
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = filename;
+  document.body.append(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
+}
+
 document.body.addEventListener('click', async (event) => {
   const target = event.target;
   if (!(target instanceof HTMLElement)) return;
@@ -215,6 +230,50 @@ document.body.addEventListener('click', async (event) => {
     setTimeout(() => {
       target.textContent = original;
     }, 1200);
+    return;
+  }
+
+  if (target.classList.contains('download-record')) {
+    const filename = target.getAttribute('data-download-filename') ?? 'record.json';
+    const raw = document.querySelector('.raw-json pre')?.textContent ?? '';
+    downloadBlob(filename, new Blob([raw], { type: 'application/json' }));
+    return;
+  }
+
+  if (target.classList.contains('export-ndjson')) {
+    if (ndjsonAbort) {
+      // Second click aborts a running export.
+      ndjsonAbort.abort();
+      return;
+    }
+    const route = parseRoute(location.hash);
+    if (route.kind !== 'collection') return;
+    const controller = new AbortController();
+    ndjsonAbort = controller;
+    const original = target.textContent;
+    try {
+      const identity = await loadIdentity(route.did);
+      const { pds, fetchFn } = pdsFetch(identity);
+      const { ndjson } = await exportCollectionNdjson(pds, route.did, route.collection, fetchFn, {
+        signal: controller.signal,
+        onProgress: (n) => {
+          target.textContent = `exporting… ${n} records so far (click to cancel)`;
+        },
+      });
+      downloadBlob(
+        ndjsonFilename(route.did, route.collection),
+        new Blob([ndjson], { type: 'application/x-ndjson' }),
+      );
+      target.textContent = original;
+    } catch (err) {
+      target.textContent =
+        err instanceof Error && err.name === 'AbortError' ? 'export cancelled' : 'export failed';
+      setTimeout(() => {
+        target.textContent = original;
+      }, 2000);
+    } finally {
+      ndjsonAbort = null;
+    }
     return;
   }
 
