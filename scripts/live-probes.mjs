@@ -31,12 +31,12 @@ async function probe(name, url, init = {}) {
     let body;
     const ct = res.headers.get('content-type') ?? '';
     if (ct.includes('json') || ct.startsWith('text/')) {
-      body = (await res.text()).slice(0, 2000);
+      body = await res.text();
     } else {
       const buf = await res.arrayBuffer();
       body = `<binary ${buf.byteLength} bytes>`;
     }
-    record(name, { url, status: res.status, headers: cors, body });
+    record(name, { url, status: res.status, headers: cors, body: body.slice(0, 2000) });
     return { res, body };
   } catch (err) {
     record(name, { url, error: String(err) });

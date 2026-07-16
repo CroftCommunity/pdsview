@@ -1,0 +1,181 @@
+
+=== resolveHandle via api.bsky.app ===
+{
+  "url": "https://api.bsky.app/xrpc/com.atproto.identity.resolveHandle?handle=bsky.app",
+  "status": 200,
+  "headers": {
+    "access-control-allow-origin": "*",
+    "content-type": "application/json; charset=utf-8"
+  },
+  "body": "{\"did\":\"did:plc:z72i7hdynmk6r22z27h6tvur\"}"
+}
+
+=== plc.directory DID doc (ledger 5) ===
+{
+  "url": "https://plc.directory/did:plc:z72i7hdynmk6r22z27h6tvur",
+  "status": 200,
+  "headers": {
+    "access-control-allow-origin": "*",
+    "content-type": "application/did+ld+json; charset=utf-8"
+  },
+  "body": "{\"@context\":[\"https://www.w3.org/ns/did/v1\",\"https://w3id.org/security/multikey/v1\",\"https://w3id.org/security/suites/secp256k1-2019/v1\"],\"id\":\"did:plc:z72i7hdynmk6r22z27h6tvur\",\"alsoKnownAs\":[\"at://bsky.app\"],\"verificationMethod\":[{\"id\":\"did:plc:z72i7hdynmk6r22z27h6tvur#atproto\",\"type\":\"Multikey\",\"controller\":\"did:plc:z72i7hdynmk6r22z27h6tvur\",\"publicKeyMultibase\":\"zQ3shQo6TF2moaqMTrUZEM1jeuYRQXeHEx4evX9751y2qPqRA\"}],\"service\":[{\"id\":\"#atproto_pds\",\"type\":\"AtprotoPersonalDataServer\",\"serviceEndpoint\":\"https://puffball.us-east.host.bsky.network\"}]}"
+}
+
+probe identity: bsky.app -> did:plc:z72i7hdynmk6r22z27h6tvur -> https://puffball.us-east.host.bsky.network
+
+=== describeRepo (ledger 1) ===
+{
+  "url": "https://puffball.us-east.host.bsky.network/xrpc/com.atproto.repo.describeRepo?repo=did:plc:z72i7hdynmk6r22z27h6tvur",
+  "status": 200,
+  "headers": {
+    "access-control-allow-origin": "*",
+    "content-type": "application/json; charset=utf-8",
+    "ratelimit-limit": "3000",
+    "ratelimit-policy": "3000;w=300",
+    "ratelimit-remaining": "2996",
+    "ratelimit-reset": "1784236019"
+  },
+  "body": "{\"handle\":\"bsky.app\",\"did\":\"did:plc:z72i7hdynmk6r22z27h6tvur\",\"didDoc\":{\"@context\":[\"https://www.w3.org/ns/did/v1\",\"https://w3id.org/security/multikey/v1\",\"https://w3id.org/security/suites/secp256k1-2019/v1\"],\"id\":\"did:plc:z72i7hdynmk6r22z27h6tvur\",\"alsoKnownAs\":[\"at://bsky.app\"],\"verificationMethod\":[{\"id\":\"did:plc:z72i7hdynmk6r22z27h6tvur#atproto\",\"type\":\"Multikey\",\"controller\":\"did:plc:z72i7hdynmk6r22z27h6tvur\",\"publicKeyMultibase\":\"zQ3shQo6TF2moaqMTrUZEM1jeuYRQXeHEx4evX9751y2qPqRA\"}],\"service\":[{\"id\":\"#atproto_pds\",\"type\":\"AtprotoPersonalDataServer\",\"serviceEndpoint\":\"https://puffball.us-east.host.bsky.network\"}]},\"collections\":[\"app.bsky.actor.profile\",\"app.bsky.feed.generator\",\"app.bsky.feed.like\",\"app.bsky.feed.post\",\"app.bsky.feed.repost\",\"app.bsky.feed.threadgate\",\"app.bsky.graph.block\",\"app.bsky.graph.follow\",\"app.bsky.graph.list\",\"app.bsky.graph.listitem\",\"app.bsky.graph.starterpack\",\"app.bsky.graph.verification\",\"app.bsky.notification.declaration\",\"chat.bsky.actor.declaration\"],\"handleIsCorrect\":true}"
+}
+
+=== listRecords (ledger 1) ===
+{
+  "url": "https://puffball.us-east.host.bsky.network/xrpc/com.atproto.repo.listRecords?repo=did:plc:z72i7hdynmk6r22z27h6tvur&collection=app.bsky.feed.post&limit=5",
+  "status": 200,
+  "headers": {
+    "access-control-allow-origin": "*",
+    "content-type": "application/json; charset=utf-8",
+    "ratelimit-limit": "3000",
+    "ratelimit-policy": "3000;w=300",
+    "ratelimit-remaining": "2995",
+    "ratelimit-reset": "1784236019"
+  },
+  "body": "{\"records\":[{\"uri\":\"at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.feed.post/3mqcp5qjdfs26\",\"cid\":\"bafyreig6kgwgaixxenkfv62gkz43fgdyoe2ddbgqbfr2edkqv5ya5kginu\",\"value\":{\"text\":\"Personnel news: @toni.bsky.team is dropping the “interim” from his title and will serve as our permanent CEO!\",\"$type\":\"app.bsky.feed.post\",\"embed\":{\"$type\":\"app.bsky.embed.record\",\"record\":{\"cid\":\"bafyreigov2ns6elnyiksqufzr6ctfg4i4eiodharfupyoc5sq23tvyew4a\",\"uri\":\"at://did:plc:cwf4mmm7mpzistinx3ox2zhj/app.bsky.feed.post/3mqcp425edfgx\"}},\"langs\":[\"en\"],\"facets\":[{\"$type\":\"app.bsky.richtext.facet\",\"index\":{\"byteEnd\":31,\"byteStart\":16},\"features\":[{\"did\":\"did:plc:cwf4mmm7mpzistinx3ox2zhj\",\"$type\":\"app.bsky.richtext.facet#mention\"}]}],\"createdAt\":\"2026-07-10T17:43:30.972Z\"}},{\"uri\":\"at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.feed.post/3mqafridzgk2e\",\"cid\":\"bafyreibowb4zpdgv74mzhpn3w433q4affyql5jd6c43tluinucj4q2jdzy\",\"value\":{\"text\":\"v1.127 is live! We're rolling out improvements to search over the coming weeks. You'll get more relevant results and more ways to find what you're looking for. \\n\\nThe new \\\"Filters\\\" button lets you query and filter by keywords, people, date range, language and more. You can even share your searches!\",\"$type\":\"app.bsky.feed.post\",\"embed\":{\"$type\":\"app.bsky.embed.images\",\"images\":[{\"alt\":\"A rendering of the new \\\"Filters\\\" button and option fields, which allow you to query and filter by keywords, people, date range, language and more.\",\"image\":{\"ref\":{\"$link\":\"bafkreifvw4djmv7ney453nfyozyvoxvrwrlnpmbfhezarsn6plkrcvrw64\"},\"size\":1554074,\"$type\":\"blob\",\"mimeType\":\"image/jpeg\"},\"aspectRatio\":{\"width\":2140,\"height\":2000}}]},\"langs\":[\"en\"],\"createdAt\":\"2026-07-09T19:50:16.599Z\"}},{\"uri\":\"at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.feed.post/3mpok7nkjtc2o\",\"cid\":\"bafyreib3xpze6k6lagrwhjn75wj4daeaj73hvhhjkmt3d5umm6qkqba5fa\",\"value\":{\"text\":\"wait a minute\",\"$type\":\"app.bsky.feed.post\",\"embed\":{\"$type\":\"app.bsky.embed.images\",\"images\":[{\"alt\":\"two spidermen pointing at"
+}
+
+=== getRecord (ledger 1) ===
+{
+  "url": "https://puffball.us-east.host.bsky.network/xrpc/com.atproto.repo.getRecord?repo=did:plc:z72i7hdynmk6r22z27h6tvur&collection=app.bsky.feed.post&rkey=3mqcp5qjdfs26",
+  "status": 200,
+  "headers": {
+    "access-control-allow-origin": "*",
+    "content-type": "application/json; charset=utf-8",
+    "ratelimit-limit": "3000",
+    "ratelimit-policy": "3000;w=300",
+    "ratelimit-remaining": "2994",
+    "ratelimit-reset": "1784236019"
+  },
+  "body": "{\"uri\":\"at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.feed.post/3mqcp5qjdfs26\",\"cid\":\"bafyreig6kgwgaixxenkfv62gkz43fgdyoe2ddbgqbfr2edkqv5ya5kginu\",\"value\":{\"text\":\"Personnel news: @toni.bsky.team is dropping the “interim” from his title and will serve as our permanent CEO!\",\"$type\":\"app.bsky.feed.post\",\"embed\":{\"$type\":\"app.bsky.embed.record\",\"record\":{\"cid\":\"bafyreigov2ns6elnyiksqufzr6ctfg4i4eiodharfupyoc5sq23tvyew4a\",\"uri\":\"at://did:plc:cwf4mmm7mpzistinx3ox2zhj/app.bsky.feed.post/3mqcp425edfgx\"}},\"langs\":[\"en\"],\"facets\":[{\"$type\":\"app.bsky.richtext.facet\",\"index\":{\"byteEnd\":31,\"byteStart\":16},\"features\":[{\"did\":\"did:plc:cwf4mmm7mpzistinx3ox2zhj\",\"$type\":\"app.bsky.richtext.facet#mention\"}]}],\"createdAt\":\"2026-07-10T17:43:30.972Z\"}}"
+}
+
+=== profile record for blob shape (ledger 4) ===
+{
+  "url": "https://puffball.us-east.host.bsky.network/xrpc/com.atproto.repo.getRecord?repo=did:plc:z72i7hdynmk6r22z27h6tvur&collection=app.bsky.actor.profile&rkey=self",
+  "status": 200,
+  "headers": {
+    "access-control-allow-origin": "*",
+    "content-type": "application/json; charset=utf-8",
+    "ratelimit-limit": "3000",
+    "ratelimit-policy": "3000;w=300",
+    "ratelimit-remaining": "2993",
+    "ratelimit-reset": "1784236019"
+  },
+  "body": "{\"uri\":\"at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.actor.profile/self\",\"cid\":\"bafyreihmkky5jpvhacnmt2vwxzejm4exit677ao2z6mevdib7lqnyvizsq\",\"value\":{\"$type\":\"app.bsky.actor.profile\",\"avatar\":{\"ref\":{\"$link\":\"bafkreihwihm6kpd6zuwhhlro75p5qks5qtrcu55jp3gddbfjsieiv7wuka\"},\"size\":256555,\"$type\":\"blob\",\"mimeType\":\"image/jpeg\"},\"banner\":{\"ref\":{\"$link\":\"bafkreichzyovokfzmymz36p5jibbjrhsur6n7hjnzxrpbt5jaydp2szvna\"},\"size\":58042,\"$type\":\"blob\",\"mimeType\":\"image/jpeg\"},\"pinnedPost\":{\"cid\":\"bafyreicnt42y6vo6pfpvyro234ac4o6ijug6adwwrh7awflgrqlt4zibxq\",\"uri\":\"at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.feed.post/3l6oveex3ii2l\"},\"description\":\"official Bluesky account (check username👆)\\n\\nBugs, feature requests, feedback: support@bsky.app\",\"displayName\":\"Bluesky\"}}"
+}
+
+=== getBlob (ledger 3) ===
+{
+  "url": "https://puffball.us-east.host.bsky.network/xrpc/com.atproto.sync.getBlob?did=did:plc:z72i7hdynmk6r22z27h6tvur&cid=bafkreihwihm6kpd6zuwhhlro75p5qks5qtrcu55jp3gddbfjsieiv7wuka",
+  "status": 200,
+  "headers": {
+    "access-control-allow-origin": "*",
+    "content-disposition": "attachment; filename=\"bafkreihwihm6kpd6zuwhhlro75p5qks5qtrcu55jp3gddbfjsieiv7wuka\"",
+    "content-type": "image/jpeg",
+    "ratelimit-limit": "3000",
+    "ratelimit-policy": "3000;w=300",
+    "ratelimit-remaining": "2992",
+    "ratelimit-reset": "1784236019"
+  },
+  "body": "<binary 256555 bytes>"
+}
+
+=== resolve third-party handle (ledger 2) ===
+{
+  "url": "https://api.bsky.app/xrpc/com.atproto.identity.resolveHandle?handle=bnewbold.net",
+  "status": 200,
+  "headers": {
+    "access-control-allow-origin": "*",
+    "content-type": "application/json; charset=utf-8"
+  },
+  "body": "{\"did\":\"did:plc:44ybard66vv44zksje25o7dz\"}"
+}
+
+=== third-party DID doc (ledger 2) ===
+{
+  "url": "https://plc.directory/did:plc:44ybard66vv44zksje25o7dz",
+  "status": 200,
+  "headers": {
+    "access-control-allow-origin": "*",
+    "content-type": "application/did+ld+json; charset=utf-8"
+  },
+  "body": "{\"@context\":[\"https://www.w3.org/ns/did/v1\",\"https://w3id.org/security/multikey/v1\",\"https://w3id.org/security/suites/secp256k1-2019/v1\"],\"id\":\"did:plc:44ybard66vv44zksje25o7dz\",\"alsoKnownAs\":[\"at://bnewbold.net\"],\"verificationMethod\":[{\"id\":\"did:plc:44ybard66vv44zksje25o7dz#atproto\",\"type\":\"Multikey\",\"controller\":\"did:plc:44ybard66vv44zksje25o7dz\",\"publicKeyMultibase\":\"zQ3shkke2XfFX6A1aRXkCqXKKF9m9N4GH9NCiRuDNFkpsqFmd\"},{\"id\":\"did:plc:44ybard66vv44zksje25o7dz#example\",\"type\":\"Multikey\",\"controller\":\"did:plc:44ybard66vv44zksje25o7dz\",\"publicKeyMultibase\":\"z6MkhaXgBZDvotDkL5257faiztiGiC2QtKLGpbnnEGta2doK\"}],\"service\":[{\"id\":\"#atproto_pds\",\"type\":\"AtprotoPersonalDataServer\",\"serviceEndpoint\":\"https://pds.robocracy.org\"}]}"
+}
+third-party PDS: https://pds.robocracy.org
+
+=== third-party describeRepo (ledger 2) ===
+{
+  "url": "https://pds.robocracy.org/xrpc/com.atproto.repo.describeRepo?repo=did:plc:44ybard66vv44zksje25o7dz",
+  "status": 200,
+  "headers": {
+    "access-control-allow-origin": "*",
+    "content-type": "application/json; charset=utf-8"
+  },
+  "body": "{\"handle\":\"bnewbold.net\",\"did\":\"did:plc:44ybard66vv44zksje25o7dz\",\"didDoc\":{\"@context\":[\"https://www.w3.org/ns/did/v1\",\"https://w3id.org/security/multikey/v1\",\"https://w3id.org/security/suites/secp256k1-2019/v1\"],\"id\":\"did:plc:44ybard66vv44zksje25o7dz\",\"alsoKnownAs\":[\"at://bnewbold.net\"],\"verificationMethod\":[{\"id\":\"did:plc:44ybard66vv44zksje25o7dz#atproto\",\"type\":\"Multikey\",\"controller\":\"did:plc:44ybard66vv44zksje25o7dz\",\"publicKeyMultibase\":\"zQ3shkke2XfFX6A1aRXkCqXKKF9m9N4GH9NCiRuDNFkpsqFmd\"},{\"id\":\"did:plc:44ybard66vv44zksje25o7dz#example\",\"type\":\"Multikey\",\"controller\":\"did:plc:44ybard66vv44zksje25o7dz\",\"publicKeyMultibase\":\"z6MkhaXgBZDvotDkL5257faiztiGiC2QtKLGpbnnEGta2doK\"}],\"service\":[{\"id\":\"#atproto_pds\",\"type\":\"AtprotoPersonalDataServer\",\"serviceEndpoint\":\"https://pds.robocracy.org\"}]},\"collections\":[\"a.guestbook.i.signed\",\"app.beaconbits.beacon.like\",\"app.beaconbits.favorite\",\"app.beaconbits.profile\",\"app.bsky.actor.profile\",\"app.bsky.feed.like\",\"app.bsky.feed.post\",\"app.bsky.feed.postgate\",\"app.bsky.feed.repost\",\"app.bsky.feed.threadgate\",\"app.bsky.graph.block\",\"app.bsky.graph.follow\",\"app.bsky.graph.list\",\"app.bsky.graph.listitem\",\"app.bsky.graph.verification\",\"app.ocho.plugin.assets\",\"app.standard-reader.read\",\"at.marque.dns\",\"at.marque.domain\",\"at.youandme.connection\",\"blue.badge.collection\",\"blue.irc.media\",\"buzz.bookhive.book\",\"chat.bsky.actor.declaration\",\"com.atproto.lexicon.schema\",\"com.example.record\",\"com.whtwnd.blog.entry\",\"community.lexicon.badge.award\",\"community.lexicon.calendar.rsvp\",\"coop.hypha.spores.site.config\",\"coop.hypha.spores.site.layout\",\"coop.hypha.spores.site.profile\",\"coop.hypha.spores.social.flower\",\"coop.hypha.spores.social.takenFlower\",\"de.atverkackt.vod-jam.completed\",\"dev.keytrace.claim\",\"events.smokesignal.Event\",\"events.smokesignal.RSVP\",\"events.smokesignal.app.profile\",\"events.smokesignal.calendar.event\",\"events.smokesignal.calendar.rsvp\",\"example.nsid.record\",\"fund.at.endorse\",\"fyi.unravel.frontpage.comment\",\"fyi.unravel"
+}
+
+=== listRecords walk page 1 (ledger 6) ===
+{
+  "url": "https://puffball.us-east.host.bsky.network/xrpc/com.atproto.repo.listRecords?repo=did:plc:z72i7hdynmk6r22z27h6tvur&collection=app.bsky.feed.like&limit=100",
+  "status": 200,
+  "headers": {
+    "access-control-allow-origin": "*",
+    "content-type": "application/json; charset=utf-8",
+    "ratelimit-limit": "3000",
+    "ratelimit-policy": "3000;w=300",
+    "ratelimit-remaining": "2991",
+    "ratelimit-reset": "1784236019"
+  },
+  "body": "{\"records\":[{\"uri\":\"at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.feed.like/3mqk7bwqowr2m\",\"cid\":\"bafyreigavgsklt7yjzqt4f3w3suqvvwpvfr6rhaaklgwwyysvetwjmfld4\",\"value\":{\"$type\":\"app.bsky.feed.like\",\"subject\":{\"cid\":\"bafyreihagvvre2pzdbbeejvbavgvvq4m77f6abarmo5rdiiv2cnaicn3ua\",\"uri\":\"at://did:plc:wbmw5r5a2j7txv72ggne2uoe/app.bsky.feed.post/3mqjroiwkcc2v\"},\"createdAt\":\"2026-07-13T17:20:49.228Z\"}},{\"uri\":\"at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.feed.like/3mqcrgjkrhf2v\",\"cid\":\"bafyreigday4znucch7fvgyeluk573mng6ns4vbz6bawqo2kv75r4cexdqm\",\"value\":{\"$type\":\"app.bsky.feed.like\",\"subject\":{\"cid\":\"bafyreic6joub3ejgybiyixqnkhrkil5dzs7thb7sceqvybhl7dmmgc36dm\",\"uri\":\"at://did:plc:kjsl6b5t5klf5cbtnkyxq3ar/app.bsky.feed.post/3mq3qs42g2s2g\"},\"createdAt\":\"2026-07-10T18:24:12.987Z\"}},{\"uri\":\"at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.feed.like/3mqcr4yrbcy2e\",\"cid\":\"bafyreihhzf6cchl7cfu3aaixn2kkfwrs5av7bbcmgpa26kr6g4b4uiru3m\",\"value\":{\"$type\":\"app.bsky.feed.like\",\"subject\":{\"cid\":\"bafyreifgetzksos67riqwxb23567plplabvjn6vtrmox3wc5cbyo2666xq\",\"uri\":\"at://did:plc:nuf2gon3beucu2tvfwkp4kev/app.bsky.feed.post/3mqcqtihcas2l\"},\"createdAt\":\"2026-07-10T18:18:53.470Z\"}},{\"uri\":\"at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.feed.like/3mqcr4fbna52w\",\"cid\":\"bafyreic7j4opub6by63a7l3ovjmyrgytohqtichjwset42x3yhvx72idlu\",\"value\":{\"$type\":\"app.bsky.feed.like\",\"subject\":{\"cid\":\"bafyreialodzcpknkr7mlgxtx3xqys5dg27lp3hv5fqu2wr2l3sngajbqem\",\"uri\":\"at://did:plc:2kfemzpsbyfpzkp4op6dopoj/app.bsky.feed.post/3mqc66rygsk24\"},\"createdAt\":\"2026-07-10T18:18:33.045Z\"}},{\"uri\":\"at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.feed.like/3mqcr43znci2m\",\"cid\":\"bafyreihkcrq2wuucwssqmsoas2dre5crxinnzh5pumkixzqjcyro3teg6y\",\"value\":{\"$type\":\"app.bsky.feed.like\",\"subject\":{\"cid\":\"bafyreib6y4wpget3a7zp7ptbk44bdhgp7gujxz6dvs5olhwjqzskuf46xa\",\"uri\":\"at://did:plc:6kos45lixtga3pdwuncvh32x/app.bsky.feed.post/3mqca6sz7y22m\"},\"createdAt\":\"2026-07-10T18:18:23.337Z\"}},{\"uri\":\"at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.fee"
+}
+
+=== listRecords walk page 2 (ledger 6) ===
+{
+  "url": "https://puffball.us-east.host.bsky.network/xrpc/com.atproto.repo.listRecords?repo=did:plc:z72i7hdynmk6r22z27h6tvur&collection=app.bsky.feed.like&limit=100&cursor=3mp5aklbwfp2b",
+  "status": 200,
+  "headers": {
+    "access-control-allow-origin": "*",
+    "content-type": "application/json; charset=utf-8",
+    "ratelimit-limit": "3000",
+    "ratelimit-policy": "3000;w=300",
+    "ratelimit-remaining": "2990",
+    "ratelimit-reset": "1784236019"
+  },
+  "body": "{\"records\":[{\"uri\":\"at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.feed.like/3mp5ajt23sf2m\",\"cid\":\"bafyreidwgxdrynbbqtxnsal5nqrgrnoeua5zqywh3bemw43mujavnnu7oy\",\"value\":{\"$type\":\"app.bsky.feed.like\",\"subject\":{\"cid\":\"bafyreiewzykllxaysdatdwcemzm6rsegrcr6rh7iw54fbeqwrvubhp6so4\",\"uri\":\"at://did:plc:j3semvzi7urrwofexkbh6n3t/app.bsky.feed.post/3mp5aii24yb2v\"},\"createdAt\":\"2026-06-25T20:13:19.685Z\"}},{\"uri\":\"at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.feed.like/3mp5a4qtn6o2w\",\"cid\":\"bafyreiblgzq3zzgmgapu5biaol63bc2fgr27dvdrnkmfa3vxg65xu4x6uq\",\"value\":{\"$type\":\"app.bsky.feed.like\",\"subject\":{\"cid\":\"bafyreihmgtje26fr73dfxiydo55wejo6kgxhwwcruuqbhw6h477tzn6mve\",\"uri\":\"at://did:plc:ioxwn2x6vkvjxwhkqyqhnl2e/app.bsky.feed.post/3mp5a424eh22p\"},\"createdAt\":\"2026-06-25T20:06:01.303Z\"}},{\"uri\":\"at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.feed.like/3mp5a4n3fjn24\",\"cid\":\"bafyreiek7zm4bhqjat5rchxadxyweap3l5vty35532jw2jrxznqmvi2tmu\",\"value\":{\"$type\":\"app.bsky.feed.like\",\"subject\":{\"cid\":\"bafyreiavwnbqihlpwtqaxjsxznki3oxtbwvgwuhiuy676gsmqpzpddfjva\",\"uri\":\"at://did:plc:ioxwn2x6vkvjxwhkqyqhnl2e/app.bsky.feed.post/3mp5a2fi4ws2p\"},\"createdAt\":\"2026-06-25T20:05:57.304Z\"}},{\"uri\":\"at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.feed.like/3mp57wz5s5g2b\",\"cid\":\"bafyreifeh6gjhhvnm5w2zmumcbeurh5fdjbobu3kslt722mbjw2tq4a27i\",\"value\":{\"$type\":\"app.bsky.feed.like\",\"subject\":{\"cid\":\"bafyreihdyhsagro77hjvcvogjwa37jpbp2gfdea7fpjz2yixmhbx5eqo6i\",\"uri\":\"at://did:plc:ddjnuf45si6yixaiyfj6bujt/app.bsky.feed.post/3mp57s4i6k22o\"},\"createdAt\":\"2026-06-25T20:02:48.705Z\"}},{\"uri\":\"at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.feed.like/3mp57wwti5t2e\",\"cid\":\"bafyreicq3arwtqdf5metjywujievtsrroni7r74c5gk7fqlvi6cm62y2n4\",\"value\":{\"$type\":\"app.bsky.feed.like\",\"subject\":{\"cid\":\"bafyreiegyrauzcajttzlozfhyogqwqnhjqhmchuo3vvogndnfrui5cngue\",\"uri\":\"at://did:plc:q74zqd5rth54hmqjzbdaerrr/app.bsky.feed.post/3mp57rjik7c22\"},\"createdAt\":\"2026-06-25T20:02:46.271Z\"}},{\"uri\":\"at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.fee"
+}
+
+=== listRecords walk page 3 (ledger 6) ===
+{
+  "url": "https://puffball.us-east.host.bsky.network/xrpc/com.atproto.repo.listRecords?repo=did:plc:z72i7hdynmk6r22z27h6tvur&collection=app.bsky.feed.like&limit=100&cursor=3moybf3z4bx2k",
+  "status": 200,
+  "headers": {
+    "access-control-allow-origin": "*",
+    "content-type": "application/json; charset=utf-8",
+    "ratelimit-limit": "3000",
+    "ratelimit-policy": "3000;w=300",
+    "ratelimit-remaining": "2989",
+    "ratelimit-reset": "1784236019"
+  },
+  "body": "{\"records\":[{\"uri\":\"at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.feed.like/3moyb65wi6x27\",\"cid\":\"bafyreiaivlxkomrnb2wybzw4hzt6cen7fj7ibhgcdn6zm3wmnlftpuls3u\",\"value\":{\"$type\":\"app.bsky.feed.like\",\"subject\":{\"cid\":\"bafyreifenxeilqqd4vcmv2hahj27zwmrja4mfu2fvka63ugu44oa7vj6m4\",\"uri\":\"at://did:plc:ufin7cbnwf3ugxulw47ulqbc/app.bsky.feed.post/3moy7nz444c2s\"},\"createdAt\":\"2026-06-23T20:41:23.554Z\"}},{\"uri\":\"at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.feed.like/3moyb62ixdp27\",\"cid\":\"bafyreih43wgrnw5qxbqmo7z2yc6xl3xfgrxstclffhmdttbpwimyam5vom\",\"value\":{\"$type\":\"app.bsky.feed.like\",\"subject\":{\"cid\":\"bafyreifohxsz3vfqyn4koeqve5zgpeupxn2gghbc6u2xujgygnombwzhoa\",\"uri\":\"at://did:plc:erew5hwushpx5l4sn4w7rhf3/app.bsky.feed.post/3moy762yybc2r\"},\"createdAt\":\"2026-06-23T20:41:19.965Z\"}},{\"uri\":\"at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.feed.like/3moyb56wvlk2c\",\"cid\":\"bafyreigqctga7jjz4k255kjs3jl2qcs6oxqotrs2uz2pm6oi3qaet7l4ce\",\"value\":{\"$type\":\"app.bsky.feed.like\",\"subject\":{\"cid\":\"bafyreias2bg2hiwqltsk3q7uahkdvimebrhn5m2tmb4qykeny4wt545diq\",\"uri\":\"at://did:plc:mbsv4nrwat54c7uciy6ny3ip/app.bsky.feed.post/3moya46tj7c22\"},\"createdAt\":\"2026-06-23T20:40:51.064Z\"}},{\"uri\":\"at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.feed.like/3moyb4e75xo27\",\"cid\":\"bafyreiayomi3iu4sgjr26dfwh34cl64tpueiecunq6ljhx6lcazzcc5ke4\",\"value\":{\"$type\":\"app.bsky.feed.like\",\"subject\":{\"cid\":\"bafyreiapqg3kbyriwmtxrr7hwat3d3efw5jqxwbheuc7pakcqdu2pel5qa\",\"uri\":\"at://did:plc:tguqbdja6c767sqh52e64pac/app.bsky.feed.post/3moy7b67m5s2e\"},\"createdAt\":\"2026-06-23T20:40:23.016Z\"}},{\"uri\":\"at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.feed.like/3moyb3tgjpk2v\",\"cid\":\"bafyreig2pb3xp4dqd5hyxjemvrigvs4walpu5zeyt63acur4p5fppb2e4m\",\"value\":{\"$type\":\"app.bsky.feed.like\",\"subject\":{\"cid\":\"bafyreif3gbq5phlljpqpuvp42intp4liih4ft6erbkhzby5quhypc3s36e\",\"uri\":\"at://did:plc:46nyrb43x5oct5cnhzstlrl4/app.bsky.feed.post/3moy7kuj7a22q\"},\"createdAt\":\"2026-06-23T20:40:05.368Z\"}},{\"uri\":\"at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.fee"
+}
+
+All probes complete. Copy the output above into the run summary.
