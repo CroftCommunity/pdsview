@@ -46,6 +46,12 @@ test('handle input resolves then navigates to the DID URL, handle shown on-page 
 });
 
 test('pasting a DID navigates directly', async ({ page }) => {
+  // Catch-all first (Playwright matches last-registered first): nothing may
+  // leave the local origin except the routes mocked below.
+  await page.route('**/*', (route) => {
+    const host = new URL(route.request().url()).hostname;
+    return host === '127.0.0.1' || host === 'localhost' ? route.fallback() : route.abort();
+  });
   await page.route(`https://plc.directory/${DID}`, (route) =>
     route.fulfill({ json: { id: DID, alsoKnownAs: [`at://${HANDLE}`], service: [] } }),
   );
