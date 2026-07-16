@@ -18,7 +18,7 @@ test('shell renders wordmark, description and input with zero external requests'
 
   await expect(page).toHaveTitle(/pdsview/);
   await expect(page.locator('.wordmark')).toHaveText('pdsview');
-  await expect(page.locator('header p, .tagline').first()).toBeVisible();
+  await expect(page.locator('.tagline')).toBeVisible();
 
   const input = page.getByRole('textbox');
   await expect(input).toBeVisible();

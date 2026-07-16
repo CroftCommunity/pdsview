@@ -308,5 +308,19 @@ document.body.addEventListener(
   true,
 );
 
+// PWA: register the app-shell service worker and surface offline state. The
+// offline notice lives in the header so it survives route re-renders.
+if ('serviceWorker' in navigator) {
+  void navigator.serviceWorker.register('/sw.js', { type: 'module' });
+}
+
+function reflectOnlineState(): void {
+  const notice = document.querySelector<HTMLElement>('.offline-notice');
+  if (notice) notice.hidden = navigator.onLine;
+}
+window.addEventListener('online', reflectOnlineState);
+window.addEventListener('offline', reflectOnlineState);
+reflectOnlineState();
+
 window.addEventListener('hashchange', () => void renderRoute());
 void renderRoute();

@@ -290,6 +290,14 @@ button.load-more {
   white-space: nowrap;
 }
 
+.offline-notice {
+  border: 1px solid var(--light-granite);
+  border-left: 4px solid var(--ruddy-ink);
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
+}
+
 .site-footer {
   background: var(--deep-schist);
   color: var(--oatmeal-canvas);

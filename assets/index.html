@@ -9,10 +9,16 @@
       content="A quiet, client-side browser for the public contents of any ATProto personal data server."
     />
     <link rel="stylesheet" href="/app.css" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="icon" href="/icon.svg" type="image/svg+xml" />
     <script type="module" src="/main.js"></script>
   </head>
   <body>
     <header class="site-header">
+      <p class="offline-notice" hidden>
+        You’re offline. The app shell works, but nothing new can be fetched until the
+        connection returns.
+      </p>
       <h1 class="wordmark">pdsview</h1>
       <p class="tagline">
         Paste a handle, DID, or at:// URI and browse the public contents of the data server
