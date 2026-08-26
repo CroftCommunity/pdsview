@@ -1,8 +1,7 @@
 import { expect, test } from '@playwright/test';
 
 // Mobile-first, tap-first: nothing may overflow horizontally on a phone.
-// Workspace standard — canonical in croft-pwa/docs/MOBILE-FIRST.md, index at
-// CroftC/.claude/MOBILE-FIRST.md.
+// Workspace standard — canonical in croft-pwa/docs/MOBILE-FIRST.md.
 //
 // Widths: 320 = small Android / older iPhone (the one that actually breaks),
 // 360 = common Android, 390 = modern iPhone.

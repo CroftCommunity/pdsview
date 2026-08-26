@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 
 // Automated accessibility scan. Adopts the workspace standard — canonical writeup
-// in croft-pwa/docs/ACCESSIBILITY.md, index at CroftC/.claude/ACCESSIBILITY.md.
+// in croft-pwa/docs/ACCESSIBILITY.md.
 // Zero serious/critical axe violations.
 //
 // HERMETIC by construction: all cross-origin requests are blocked. pdsview's whole
