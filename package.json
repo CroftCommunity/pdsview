@@ -9,6 +9,7 @@
     "build": "node scripts/build.mjs",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
+    "gate": "npm run typecheck && npm run build && npm run test && npm run test:e2e",
     "test:e2e": "playwright test",
     "serve": "node scripts/serve-dist.mjs",
     "probe": "node scripts/live-probes.mjs"
